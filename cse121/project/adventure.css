@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('spooky.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.output {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.choices {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.input {
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white;
+}

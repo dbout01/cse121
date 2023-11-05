@@ -1,0 +1,321 @@
+JavaScript Basics
+* Can't access local files
+* Can't directly access databases
+* Can't access hardware
+* Completely different from Java
+* ECMAScript ix the scripting language that forms the basis for JavaScript
+    * ECMA-262 is the current standard
+* JS makes web pages more interactive
+    * Access & modify content
+    * Program rules
+    * React to events
+* Javascript composes of different files outside of HTML & CSS
+* Script insertion can be done in heading tag or body
+
+
+Variables
+    Primitives
+        string
+        number
+        boolean
+        null
+        undefined
+
+    Objects
+        object literals
+        Arrays
+        Functions
+        Classes
+        ...basically everything that is not a primitive!
+
+Values are embedded in programs using literals.
+Different types of values use different <b>delimeters</b> to indicate where the value begins and ends.
+A common delimiter used for strings that you are probably familar with is quotations.
+In Javascript we have 'single quotes', "double quotes", and `back-ticks`.
+Single and double quotes function exactly the same...pick one and stick with it.
+Back-ticks are used to form template literal strings where interpolation can happen.
+
+'typeof' can be used to see what type a stored value is given by Javascript.
+
+Variables
+    - Variables are containers for values
+    - Must be declared (created) to be used
+    - 'var'
+    - 'let'
+    - 'const'
+    - Differences (Which should I use?)
+    - 'const' declared variables are not "unchangeable", they just cannot be re-assigned.
+
+
+Stongly Typed vs Weakly Typed
+    Strongly typed: If you assign a value to a variable Python will not change the type of that variable. ex: Python
+    Weakly typed: Doing the same thing. ex: JavaScript
+
+Coercion
+the process Javascript uses when it has to do a comparison or arithmetic operation between two values that don't match.
+    - Javascript prefers numeric comparisons and will coerce to a primitive numeric value if it can
+    - In the case of '+' (addition or concatination). If there is a string involved...all values will be converted to strings.
+      That's the only way JS knows to combine mixed values.
+
+Strict Mode
+    if you are in strict mode the browser will throw an error if it finds you using a variable before you declare it.
+    This is a good thing.
+    To turn strict mode on we simply add 'use strict'; to the top of a file (or function).
+
+Arrays
+    Arrays are not primitive values like strings or numbers.
+    This makes them much more flexible. Arrays are lists of values.
+    Each spot of an array can hold any valid value.
+    In JavaScript, arrays can be declared like this.
+        let names = ["Bob", "Sue", "Jorge", "Svetlana"];
+
+Strings
+Strings are a type of primitive value.
+The share some similarities with Arrays however.
+If you are wondering how long a string is for example, you can look at it's 'length' property.
+
+String Delimiters
+Strings can be delimited in three ways:
+    double quotes '
+    single quotes "
+    Backtick `
+Double quotes and single quotes are completely interchangable. Pick one and stick with it.
+
+
+
+
+
+FUNCTIONS
+    - A set of statements that performs a task or calculates a value
+    - A well thought out and constructed function should be rather small
+    - A function should ideally do one thing, and do it well
+
+    Declaring Functions
+        - 'function' keyword is used instead of 'def'
+        - the convention usually used for names of functions and variables is called 'camel case'
+            ex:           function averageTwoNumbers(firstNum, secondNum) {
+                           return (firstNum + secondNum) / 2;
+                           }
+        - { } = scope operators
+
+    Another way to write functions
+        - functions are Objects. That means that anything we can do with an Object, we can do with a function
+        - Including assigning them to variables. When we do this it is called a 'function expressions'
+    
+    Global scope
+        - When you use the traditional function declaration syntax, your function is created and lives in this global scope
+        - An advantage of this is that you could write code using the function declaration that used the function BEFORE the function declaration like many other languages allow
+
+
+
+
+
+DEFINED OBJECTS
+    - allow us to mingle different types of data together, and build relationships between the data
+    - key value pairs example:
+        let medications = {
+                'Lactated Ringers' : {'id':'13ab7','amount':100,'amountType':'L','expDate':'12/30/2029'},
+                'Levothyroxine' : {'id':'at342','amount':2000,'amountType':'ct','expDate':'03/18/2021'},
+                'Rosuvastatin' : {'id':'gr5423','amount':1500,'amountType':'ct','expDate':'09/01/2020'},
+                'Albuterol' : {'id':'iuy6532','amount':1325,'amountType':'ct','expDate':'01/01/2023'},
+                'Esomeprazole' : {'id':'mnb78932','amount':23145,'amountType':'ct','expDate':'10/01/2021'}
+        }
+                getting expiration date:                                   let aBestByDate = medications['Albuterol']['expDate']
+                getting expiration date using a 2-d array:       let aBestByDate = medications[4][4]
+    - Dot Notation
+        - ex 1: medications.Rosuvastatin.amount = 1432
+        - ex 2: let aBestByDate = medications.Albuterol.expDate
+        - It only works when you know what the keys are at the time you are writting your code
+        - ex 3: let aBestByDate = medications[selectedMedication].expDate
+
+
+
+
+
+LIBRARIES
+    - Encapsulation: the bundling or co-location of information (data) and behavior (functions)
+       that together serve a common purpose
+    
+    ES Modules
+        Essential Facts
+            - ESModules are based around files...one module per file.
+            - ESModules are strict by default
+            - ESModules establish their own private scope.
+            - Anything that you need access to outside of the module must be exported.
+            - Exports can be default (one per module) or named (as many as you need)
+            - You use the import command to use a module.
+            - When you use ESModules you need to let the browser know by adding type="module" to your script tag ie.:
+                            <script src="main.js" type="module"></script>
+
+        Benefits:
+            - reusability
+                Modules maximize reusability since a module can be imported and used in any other module that needs it.
+                Beyond this, if a module would be beneficial in another program, you can create a package out of it.
+                A package can contain one or more modules and can be uploaded to NPM to be downloaded by anyone.
+                react, lodash, and jquery are all examples of NPM packages since they can be installed from the NPM directory.
+            - composability
+                Because modules explicitly define their imports and exports, they can be easily composed.
+                More than that, a sign of good software is that is can be easily deleted.
+                Modules increase the "delete-ability" of your code.
+            - leverage
+                The NPM registry hosts the world's largest collection of free, reusable modules (over 700,000 to be exact).
+                Odds are if you need a specific package, NPM has it.
+            - isolation
+                "Understanding the whole system is difficult. Because (your software) is composed of small, focused (modules),
+                    each of those (modules) can be thought about, built and or repaired in isolation. This isolation allows multiple people
+                    to work individually on the (app) while not bottle-necking each other. Also if one of the (modules) breaks, instead of
+                    replacing the whole (app), you just have to replace the individual (module) that broke."
+            - organization
+                Modules provide a natural separation point. Along with that, as we'll see soon, modules prevent you from polluting
+                the global namespace and allow you to avoid naming collisions.
+        - software should be separated into different pieces where each piece
+        has a specific purpose and clear boundaries for how it interacts with other pieces
+        3 Parts:
+            1. Dependencies (imports)
+                "import" in code
+            2. code
+                the actual code
+            3. exports
+                the "interface of a module"
+            ex:
+                                // imports
+                                import React from "react";
+                                import { createMemoryHistory } from "history";
+                                import Router from "./Router";
+
+                                // code
+                                class MemoryRouter extends React.Component {
+                                history = createMemoryHistory(this.props);
+                                render() {
+                                    return (
+                                    <Router
+                                        history={this.history}
+                                        children={this.props.children}
+                                    />;
+                                    )
+                                }
+                                }
+
+                                // exports
+                                export default MemoryRouter;
+
+
+
+
+
+AJAX
+    - "Asynchronous Javascript And Xml"
+    - a collection of technologies that allow a webpage to make a request to a server after it has loaded for additional information
+    - use "fetch api" to make requests
+    - Synchronous vs. Asynchronous
+    - "Promises": gives us another way to say "when you finish your thing...then do this next thing".
+        The best way to understand them is by seeing them in practice.
+        "fetch" uses promises
+    - example: getting an api using Promise
+                    const url = "https://pokeapi.co/api/v2/pokemon/ditto";
+                    let results = null;
+                    async function getPokemon(url) {
+                    const response = await fetch(url);
+                    //check to see if the fetch was successful
+                    if (response.ok) {
+                        // the API will send us JSON...but we have to convert the response before we can use it
+                        // .json() also returns a promise...so we await it as well.
+                        const data = await response.json();
+                        doStuff(data);
+                    }
+                    }
+                    function doStuff(data) {
+                    results = data;
+                    console.log("first: ", results);
+                    }
+                    getPokemon(url);
+                    console.log("second: ", results);
+
+
+
+
+
+LOOPS
+    Looping Over Arrays
+        likeCounts.forEach((aCount) => console.log(aCount));
+        If you are looping over an array use:
+            - map
+            - filter
+            - reduce
+            - forEach
+        ex:
+            likeCounts.forEach((aCount) => console.log(aCount));
+            for-in Loop
+                - iterate over the properties of an object, allowing you to manipulate or
+                print out the property values associated with each key
+                - for-in is very helpful when you do need to loop over an object
+                ex:
+                    let medications = {
+                    "Lactated Ringers": {
+                        id: "13ab7",
+                        amount: 100,
+                        amountType: "L",
+                        expDate: "12/30/2029",
+                    },
+                    Levothyroxine: {
+                        id: "at342",
+                        amount: 2000,
+                        amountType: "ct",
+                        expDate: "03/18/2021",
+                    },
+                    Rosuvastatin: {
+                        id: "gr5423",
+                        amount: 1500,
+                        amountType: "ct",
+                        expDate: "09/01/2020",
+                    },
+                    Albuterol: {
+                        id: "iuy6532",
+                        amount: 1325,
+                        amountType: "ct",
+                        expDate: "01/01/2023",
+                    },
+                    Esomeprazole: {
+                        id: "mnb78932",
+                        amount: 23145,
+                        amountType: "ct",
+                        expDate: "10/01/2021",
+                    },
+                    };
+
+        let aMedication = medications["Lactated Ringers"];
+        for (propertyName in aMedication) {
+        console.log(aMedication[propertyName]);
+        }
+
+
+    for-of Loop
+        - is the same as the Python for-in loop
+        - It can, but shouldn't, be used to iterate over the elements of a list, set, map,
+        or other type of data structure
+        - It won't iterate over the properties of a defined object
+        ex: 
+            let ages = [3, 5, -1];
+            for (anAge of ages) {
+            console.log(anAge);
+            }
+
+    for Loop
+        - If you are looping over an array don't use It
+        - You should look at .map, .filter, .reduce or .forEach
+        ex:
+        for(let i = 1, i <=10, i++){
+	    console.log(i)
+        }
+
+    while Loop
+        - Like Python's while loop, JavaScript's while loop works with a single boolean logic check
+          to assess the state of your application by assessing one or more boolean logic statements
+        ex:
+        let total = 0;
+        while (total < 10) {
+        console.log(total);
+        total++;
+        }
+
+
